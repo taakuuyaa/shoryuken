@@ -20,7 +20,7 @@ RSpec.describe ActiveJob::Base do
   describe '#perform_now' do
     it 'allows keyword args' do
       collaborator = double 'worker collaborator'
-      subject.send(:define_method, :perform) do |**kwargs|
+      subject.send(:define_method, :perform) do |kwargs|
         collaborator.foo(**kwargs)
       end
       expect(collaborator).to receive(:foo).with(foo: 'bar')
